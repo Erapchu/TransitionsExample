@@ -41,12 +41,14 @@ namespace TransitionsExample.ViewModel
 
         private void Next(object obj)
         {
-            SelectedIndex++;
+            if (SelectedIndex < Slides.Count - 1)
+                SelectedIndex++;
         }
 
         private void Previous(object obj)
         {
-            SelectedIndex--;
+            if (SelectedIndex > 0)
+                SelectedIndex--;
         }
 
         private void Add(object obj)
