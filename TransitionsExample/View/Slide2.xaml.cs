@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace TransitionsExample.View
 {
     /// <summary>
-    /// Interaction logic for UserControl1.xaml
+    /// Interaction logic for Slide2.xaml
     /// </summary>
-    public partial class UserControl1 : UserControl
+    public partial class Slide2 : UserControl
     {
-        public UserControl1()
+        public Slide2()
         {
             InitializeComponent();
         }

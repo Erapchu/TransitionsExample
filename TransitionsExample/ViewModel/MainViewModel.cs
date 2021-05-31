@@ -1,40 +1,78 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using TransitionsExample.Helpers;
+using TransitionsExample.View;
 
 namespace TransitionsExample.ViewModel
 {
     public class MainViewModel : ViewModelBase
     {
-        // 0 - your first frame
-        // 1 - second frame, etc.
+        private static readonly Lazy<MainViewModel> _lazyDesignTime = new Lazy<MainViewModel>(() => new MainViewModel());
+        public static MainViewModel DesignTimeInstance => _lazyDesignTime.Value;
 
-        private int _selectedTransitionIndex;
-        public int SelectedTransitionIndex
+        private ObservableCollection<UserControl> _slides;
+        public ObservableCollection<UserControl> Slides => _slides;
+
+        private int _selectedIndex;
+        public int SelectedIndex
         {
-            get => _selectedTransitionIndex;
+            get => _selectedIndex;
             set
             {
-                _selectedTransitionIndex = value;
+                _selectedIndex = value;
                 RaisePropertyChanged();
             }
         }
 
-        private RelayCommand _switchToSecondFrameCommand;
-        public RelayCommand SwitchToSecondFrameCommand => _switchToSecondFrameCommand ?? (_switchToSecondFrameCommand = new RelayCommand((o) => SwitchToSecond(o)));
-        private void SwitchToSecond(object obj)
+        public MainViewModel()
         {
-            SelectedTransitionIndex = 1;
+            _slides = new ObservableCollection<UserControl>
+            {
+                new Slide1(),
+                new Slide2()
+            };
+            _selectedIndex = 0;
         }
 
-        private RelayCommand _switchToFirstFrameCommand;
-        public RelayCommand SwitchToFirstFrameCommand => _switchToFirstFrameCommand ?? (_switchToFirstFrameCommand = new RelayCommand((o) => SwitchToFirst(o)));
-        private void SwitchToFirst(object obj)
+        private void Next(object obj)
         {
-            SelectedTransitionIndex = 0;
+            SelectedIndex++;
         }
+
+        private void Previous(object obj)
+        {
+            SelectedIndex--;
+        }
+
+        private void Add(object obj)
+        {
+            Slides.Add(new Slide1());
+        }
+
+        private void Insert(object obj)
+        {
+            Slides.Insert(0, new Slide2());
+        }
+
+        private RelayCommand _nextCommand;
+        public RelayCommand NextCommand => _nextCommand ??
+            (_nextCommand = new RelayCommand(Next));
+
+        private RelayCommand _previousCommand;
+        public RelayCommand PreviousCommand => _previousCommand ??
+            (_previousCommand = new RelayCommand(Previous));
+
+        private RelayCommand _addCommand;
+        public RelayCommand AddCommand => _addCommand ??
+            (_addCommand = new RelayCommand(Add));
+
+        private RelayCommand _insertCommand;
+        public RelayCommand InsertCommand => _insertCommand ??
+            (_insertCommand = new RelayCommand(Insert));
     }
 }

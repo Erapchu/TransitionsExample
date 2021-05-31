@@ -66,11 +66,11 @@
     <Compile Include="Helpers\RelayCommand.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="Helpers\ViewModelBase.cs" />
-    <Compile Include="View\UserControl1.xaml.cs">
-      <DependentUpon>UserControl1.xaml</DependentUpon>
+    <Compile Include="View\Slide1.xaml.cs">
+      <DependentUpon>Slide1.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\UserControl2.xaml.cs">
-      <DependentUpon>UserControl2.xaml</DependentUpon>
+    <Compile Include="View\Slide2.xaml.cs">
+      <DependentUpon>Slide2.xaml</DependentUpon>
     </Compile>
     <Page Include="View\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -84,11 +84,11 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="View\UserControl1.xaml">
+    <Page Include="View\Slide1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\UserControl2.xaml">
+    <Page Include="View\Slide2.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

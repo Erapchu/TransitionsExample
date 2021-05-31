@@ -5,17 +5,36 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:local="clr-namespace:TransitionsExample.View"
+    xmlns:vm="clr-namespace:TransitionsExample.ViewModel"
     xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
     mc:Ignorable="d"
     Title="MainWindow"
     Height="450"
-    Width="800">
+    Width="800"
+    d:DataContext="{x:Static vm:MainViewModel.DesignTimeInstance}">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
         <md:Transitioner
             AutoApplyTransitionOrigins="True"
-            SelectedIndex="{Binding SelectedTransitionIndex}">
-            <local:UserControl1 />
-            <local:UserControl2 />
+            ItemsSource="{Binding Slides}"
+            SelectedIndex="{Binding SelectedIndex}">
         </md:Transitioner>
+        <StackPanel Grid.Column="1">
+            <Button 
+                Content="Next"
+                Command="{Binding NextCommand}"/>
+            <Button 
+                Content="Previous"
+                Command="{Binding PreviousCommand}"/>
+            <Button 
+                Content="Add page"
+                Command="{Binding AddCommand}"/>
+            <Button 
+                Content="Insert page"
+                Command="{Binding InsertCommand}"/>
+        </StackPanel>
     </Grid>
 </Window>
