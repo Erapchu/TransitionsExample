@@ -29,12 +29,34 @@ namespace TransitionsExample.ViewModel
             }
         }
 
+        private bool _showHide1;
+        public bool ShowHide1
+        {
+            get => _showHide1;
+            set
+            {
+                _showHide1 = value;
+                RaisePropertyChanged();
+            }
+        }
+
+        private bool _showHide2;
+        public bool ShowHide2
+        {
+            get => _showHide2;
+            set
+            {
+                _showHide2 = value;
+                RaisePropertyChanged();
+            }
+        }
+
         public MainViewModel()
         {
             _slides = new ObservableCollection<UserControl>
             {
-                new Slide1(),
-                new Slide2()
+                new Slide1(this),
+                new Slide2(this)
             };
             _selectedIndex = 0;
         }
@@ -53,12 +75,12 @@ namespace TransitionsExample.ViewModel
 
         private void Add(object obj)
         {
-            Slides.Add(new Slide1());
+            Slides.Add(new Slide1(this));
         }
 
         private void Insert(object obj)
         {
-            Slides.Insert(0, new Slide2());
+            Slides.Insert(0, new Slide2(this));
         }
 
         private RelayCommand _nextCommand;

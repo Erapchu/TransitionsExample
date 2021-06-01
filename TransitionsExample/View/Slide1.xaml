@@ -12,10 +12,14 @@
             HorizontalAlignment="Stretch"
             VerticalAlignment="Stretch"
             Mode="Dark">
-            <TextBlock 
-                Text="Slide1" 
+            <StackPanel
                 VerticalAlignment="Center"
-                HorizontalAlignment="Center"/>
+                HorizontalAlignment="Center">
+                <TextBlock 
+                    HorizontalAlignment="Center"
+                    Text="Slide1"/>
+                <Button Content="Show/Hide1" Command="{Binding ShowHideCommand}"/>
+            </StackPanel>
         </md:ColorZone>
     </Grid>
 </UserControl>

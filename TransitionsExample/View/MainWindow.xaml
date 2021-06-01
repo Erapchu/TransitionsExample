@@ -35,6 +35,8 @@
             <Button 
                 Content="Insert page"
                 Command="{Binding InsertCommand}"/>
+            <Button Content="Show/Hide 1" Visibility="{Binding ShowHide1, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+            <Button Content="Show/Hide 2" Visibility="{Binding ShowHide2, Converter={StaticResource BooleanToVisibilityConverter}}"/>
         </StackPanel>
     </Grid>
 </Window>

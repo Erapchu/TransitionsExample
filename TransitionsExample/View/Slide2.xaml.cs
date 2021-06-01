@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TransitionsExample.ViewModel;
 
 namespace TransitionsExample.View
 {
@@ -20,9 +21,10 @@ namespace TransitionsExample.View
     /// </summary>
     public partial class Slide2 : UserControl
     {
-        public Slide2()
+        public Slide2(MainViewModel mainVM)
         {
             InitializeComponent();
+            DataContext = new Slide2ViewModel(mainVM);
         }
     }
 }
